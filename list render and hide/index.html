@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Total Available Data: <span id="count"></span></h1>
+    <div class="row" id="quotebox">
+      <div class="text-center">
+        <button class="default" onclick="randomQuote()" type="submit">
+          Click To Get Random Data
+        </button>
+      </div>
+      <div id="detail"><h1></h1></div>
+    </div>
+  </body>
+</html>
+<script>
+  var quotesList = [
+    {
+      id: 1,
+      quote: "Planting popcorn does not produce more popcorn",
+      person: "Farmer Ted",
+    },
+    {
+      id: 2,
+      quote: "White whale, bad whale",
+      person: "Confucious (Moby Dick)",
+    },
+    {
+      id: 3,
+      quote: "Use the strobe function to disorientate your attacker",
+      person: "Flashlight",
+    },
+    {
+      id: 4,
+      quote: "Apply liberally to your erogenous zones",
+      person: "Spice Bomb",
+    },
+    {
+      id: 5,
+      quote: "Help me, I'm bleaching",
+      person: "The Great Barrier Reef",
+    },
+    {
+      id: 6,
+      quote: "Help me, I'm bleaching",
+      person: "The Great Barrier Reef",
+    },
+  ];
+
+  let count = 0;
+  for (let item in quotesList) {
+    count++;
+  }
+  document.getElementById("count").innerHTML = count;
+
+  const myArr = JSON.parse(JSON.stringify(quotesList));
+  console.log(myArr);
+
+  function randomQuote() {
+    let listLength = Object.keys(quotesList).length;
+    let randVal = quotesList[Math.floor(Math.random() * listLength)];
+
+    document.getElementById("detail").innerHTML = Object.values(randVal);
+
+    console.log(randVal);
+    if (count >= 0) {
+      document.getElementById("count").innerHTML = count--;
+    } else {
+      document.getElementById("detail").innerHTML = "Value finish";
+    }
+  }
+</script>
